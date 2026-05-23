@@ -1,0 +1,20 @@
+# Netlify site: https://admin.rapido.neighshopglobal.com
+# Base directory in UI: new-version/frontend/admin
+
+[build]
+  command = "npm ci --prefix .. && npm run build:admin --prefix .."
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
